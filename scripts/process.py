@@ -26,7 +26,7 @@ def split_file(raw_file, seperate_day, begin_date):
             train.write(",".join(entry[:3]) + "," + str(date_delta) + "\n")
         elif int(entry[2]) == 1:
             validation.write(",".join(entry[:2]) + "\n")
-            print ",".join(entry[:2])
+            #print ",".join(entry[:2])
     validation.write("99999999999,9" + "\n")
     train.close()
     validation.close()
@@ -37,6 +37,7 @@ def generate_result(validation):
     entrys.sort(key=lambda x: x.split(",")[0])
     result = open("output/result.txt", "w")
     for index, entry in enumerate(entrys):
+	print index,entry
         uid, tid = entry.strip().split(",")
         if index == 0:
             cur_id = uid
