@@ -7,7 +7,7 @@ entrys = test.readlines()
 entrys.sort(key=lambda x: x.split(",")[0])
 for index, entry in enumerate(entrys):
     uid, tid = entry.strip().split(",")
-    if index == 0:
+    if 0 == index:
         cur_id = uid
         cur_result = [tid]
     elif uid == cur_id:
