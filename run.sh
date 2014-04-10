@@ -10,5 +10,5 @@
 # gen prediction output
 python scripts/gen_output.py
 
-# local test
-#python scripts/test.py
+# calc nums
+python scripts/calc.py
