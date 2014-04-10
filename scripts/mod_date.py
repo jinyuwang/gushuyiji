@@ -4,7 +4,7 @@
 fin = open("input/t_alibaba_data.csv")
 fout = open("input/input.csv", "w")
 
-fout.write("user_id,brand_id,type,visit_datetime\n")
+fout.write("user_id,brand_id,type,month,day\n")
 
 fin.readline()
 for line in fin.readlines():
@@ -21,8 +21,7 @@ for line in fin.readlines():
         day = int(date[2])
         day = "0" + str(day)
     
-    entrys[3] = "2012" + "0" + month + day
-    fout.write(",".join(entrys) + "\n")
+    fout.write(entrys[0] + "," + entrys[1] + "," + entrys[2] + ",0" +  month + "," + day + "\n")
 
-fin.close()
 fout.close()
+fin.close()
