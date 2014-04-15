@@ -51,6 +51,7 @@ int main(int argc, char **argv) {
 		const std::string param_task		= cmdline.registerParameter("task", "r=regression, c=binary classification [MANDATORY]");
 		const std::string param_meta_file	= cmdline.registerParameter("meta", "filename for meta information about data set");
 		const std::string param_train_file	= cmdline.registerParameter("train", "filename for training data [MANDATORY]");
+		const std::string param_test_all_file	= cmdline.registerParameter("test_all", "filename for predict [MANDATORY]");
 		const std::string param_test_file	= cmdline.registerParameter("test", "filename for test data [MANDATORY]");
 		const std::string param_val_file	= cmdline.registerParameter("validation", "filename for validation data (only for SGDA)");
 		const std::string param_out		= cmdline.registerParameter("out", "filename for output");
@@ -110,6 +111,15 @@ int main(int argc, char **argv) {
 		);
 		test.load(cmdline.getValue(param_test_file));
 		if (cmdline.getValue(param_verbosity, 0) > 0) { test.debug(); }
+
+		std::cout << "Loading test_all... \t" << std::endl;
+		Data test_all(
+			cmdline.getValue(param_cache_size, 0),
+			! (!cmdline.getValue(param_method).compare("mcmc")), // no original data for mcmc
+			! (!cmdline.getValue(param_method).compare("sgd") || !cmdline.getValue(param_method).compare("sgda")) // no transpose data for sgd, sgda
+		);
+		test_all.load(cmdline.getValue(param_test_all_file));
+		if (cmdline.getValue(param_verbosity, 0) > 0) { test_all.debug(); }
 
 		Data* validation = NULL;
 		if (cmdline.hasParameter(param_val_file)) {
@@ -368,8 +378,10 @@ int main(int argc, char **argv) {
 		// () Save prediction
 		if (cmdline.hasParameter(param_out)) {
 			DVector<double> pred;
-			pred.setSize(test.num_cases);
-			fml->predict(test, pred);
+			//pred.setSize(test.num_cases);
+			//fml->predict(test, pred);
+			pred.setSize(test_all.num_cases);
+			fml->predict(test_all, pred);
 			pred.save(cmdline.getValue(param_out));	
 		}
 				 	
