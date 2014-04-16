@@ -7,6 +7,8 @@ import sys
 N_limit = int(sys.argv[1])
 file_in = sys.argv[2]
 file_out = sys.argv[3]
+user_item_limit = 10
+
 
 fin = open(file_in)
 ftemp = open("temp___", "w")
@@ -38,7 +40,8 @@ for index, entry in enumerate(entrys):
         cur_id = uid
         cur_result = [tid]
     elif uid == cur_id:
-        cur_result.append(tid)
+        if len(cur_result) <= user_item_limit:
+            cur_result.append(tid)
     else:
         fout.write(cur_id + "\t" + ",".join(set(cur_result)) + "\n")
         cur_id = uid
