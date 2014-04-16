@@ -51,37 +51,37 @@ fin.close()
 mark_list.sort(key = lambda var:var[0], reverse = True)
 
 ###debug
-fd_mark = open("mark_list.csv", "w")
-fd_user_index = open("user_index.csv", "w")
-fd_brand_index = open("brand_index.csv", "w")
-fd_user_id = open("user_id_list.csv", "w")
-fd_brand_id = open("brand_id_list.csv", "w")
+#fd_mark = open("mark_list.csv", "w")
+#fd_user_index = open("user_index.csv", "w")
+#fd_brand_index = open("brand_index.csv", "w")
+#fd_user_id = open("user_id_list.csv", "w")
+#fd_brand_id = open("brand_id_list.csv", "w")
 
-fd_mark.write("p line_num\n")
-for li in mark_list:
-    fd_mark.write(str(li[0]) + " " + str(li[1]) + "\n")
-
-fd_user_id.write("user_id\n")
-for li in user_id_list:
-    fd_user_id.write(li + "\n")
-
-fd_brand_id.write("brand_id\n")
-for li in brand_id_list:
-    fd_brand_id.write(li + "\n")
-
-fd_user_index.write("user_index\n")
-for li in user_index_list:
-    fd_user_index.write(str(li) + "\n")
-
-fd_brand_index.write("brand_index\n")
-for li in brand_index_list:
-    fd_brand_index.write(str(li) + "\n")
-
-fd_mark.close()
-fd_brand_id.close()
-fd_user_id.close()
-fd_brand_index.close()
-fd_user_index.close()
+#fd_mark.write("p line_num\n")
+#for li in mark_list:
+#    fd_mark.write(str(li[0]) + " " + str(li[1]) + "\n")
+#
+#fd_user_id.write("user_id\n")
+#for li in user_id_list:
+#    fd_user_id.write(li + "\n")
+#
+#fd_brand_id.write("brand_id\n")
+#for li in brand_id_list:
+#    fd_brand_id.write(li + "\n")
+#
+#fd_user_index.write("user_index\n")
+#for li in user_index_list:
+#    fd_user_index.write(str(li) + "\n")
+#
+#fd_brand_index.write("brand_index\n")
+#for li in brand_index_list:
+#    fd_brand_index.write(str(li) + "\n")
+#
+#fd_mark.close()
+#fd_brand_id.close()
+#fd_user_id.close()
+#fd_brand_index.close()
+#fd_user_index.close()
 ###debug
 
 fout_index.write("p line_num u_index b_index\n")
