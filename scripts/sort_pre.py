@@ -31,8 +31,8 @@ for line in fb.readlines():
 
 for line in ftest.readlines():
     line = line.split(" ")
-    user = line[0].split(":")
-    brand = line[1].split(":")
+    user = line[1].split(":")
+    brand = line[2].split(":")
     user_index_list.append(int(user[0]))
     brand_index_list.append(int(brand[0]))
 
