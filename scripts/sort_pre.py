@@ -4,13 +4,13 @@
 
 import sys
 
-user_num = 4
+user_num = 884
 
 user_id_list = []
 brand_id_list = []
 user_index_list = []
 brand_index_list = []
-mark_index = {}
+mark_list = []
 index = 0
 
 file_in = sys.argv[1]
@@ -21,8 +21,8 @@ fin = open(file_in)
 ftest = open(file_test)
 fout_index = open(file_out_index, "w")
 fout_id = open(file_out_id, "w")
-fu = open("user_id.csv")
-fb = open("brand_id.csv")
+fu = open("../input/user_id.csv")
+fb = open("../input/brand_id.csv")
 
 
 fu.readline()
@@ -44,11 +44,11 @@ for line in ftest.readlines():
 ftest.close()
 
 for line in fin.readlines():
-    mark_index[float(line)] = index
+    mark_list.append((float(line), index))
     index += 1
 fin.close()
 
-mark_list = sorted(mark_index.iteritems(), key = lambda var:var[0], reverse = True)
+mark_list.sort(key = lambda var:var[0], reverse = True)
 
 ###debug
 fd_mark = open("mark_list.csv", "w")
