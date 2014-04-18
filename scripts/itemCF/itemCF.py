@@ -8,6 +8,7 @@ recommend_users = int(sys.argv[2])
 max_nums_per_user = int(sys.argv[3])
 
 train = {}
+uindex_list = []
 
 def ItemSimilarity(train):
     C = dict()
@@ -61,18 +62,14 @@ def Recommendation(train, user_id, W, K):
 #        }
 
 fin = open(ftrain)
-cnt = 0
 while True:
     line = fin.readline()
     if 0 == len(line):
         break
-    if cnt >= recommend_users:
-        break
-    cnt += 1
     uindex, brand = line.strip().split(" ")
     brands = brand.split(",")
     train[uindex] = brands
-
+    uindex_list.append(uindex)
 #print "train:"
 #print train
 
@@ -81,14 +78,14 @@ W = ItemSimilarity(train)
 #print "\nW:"
 #print W
 #print "\nrank:"
-for uindex, items in train.items():
+for ii in range(0, recommend_users):
+    uindex = uindex_list[ii]
     rank = Recommendation(train, uindex, W, 5)
     #print rank
-    res = ""
-    index_list = []
+    cnt = 0
     for index, ra in rank:
-        if max_nums_per_user == len(index_list):
+        if cnt >= max_nums_per_user:
             break
-        index_list.append(index)
+        cnt += 1
         print str(uindex) + " " + index 
     #print str(uindex) + "\t" + ",".join(index_list)
