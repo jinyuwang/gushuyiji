@@ -90,5 +90,5 @@ for uindex, items in train.items():
         if max_nums_per_user == len(index_list):
             break
         index_list.append(index)
-
-    print str(uindex) + "\t" + ",".join(index_list)
+        print str(uindex) + " " + index 
+    #print str(uindex) + "\t" + ",".join(index_list)
